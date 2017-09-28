@@ -10,7 +10,7 @@ gulp.task('es2015', function() {
   return gulp
     .src('datepicker.js')
     .pipe(babel({presets: [
-      ['env'] // https://goo.gl/SnO01g
+      ['env', { "modules": false }] // https://goo.gl/SnO01g
     ]}))
     .on('error', onError)
     .pipe(concat('datepicker-es5.js'))
@@ -80,7 +80,7 @@ gulp.task('watch', function(done) {
   return done(); // Async completion.
 });
 
-gulp.task('default', gulp.series('es2015', 'uglify-js', 'less', 'watch'));
+gulp.task('default', gulp.series('es2015', /*'uglify-js',*/ 'less', 'watch'));
 
 // http://goo.gl/SboRZI
 // Prevents gulp from crashing on errors.
